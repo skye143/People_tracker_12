@@ -198,5 +198,31 @@ var employee_tracker = function () {
                         }
                     }
 
+                    db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, [answers.firstName, answers.lastName, role.id, answers.manager.id], (err, result) => {
+                        if (err) throw err;
+                        console.log(`Added ${answers.firstName} ${answers.lastName} to the database.`)
+                        employee_tracker();
+                    });
+                })
+            });
+        } else if (answers.prompt === 'Update An Employee Role') {
+            // Calling the database to acquire the roles and managers
+            db.query(`SELECT * FROM employee, role`, (err, result) => {
+                if (err) throw err;
 
+                inquirer.prompt([
+                    {
+                        // Choose an Employee to Update
+                        type: 'list',
+                        name: 'employee',
+                        message: 'Which employees role do you want to update?',
+                        choices: () => {
+                            var array = [];
+                            for (var i = 0; i < result.length; i++) {
+                                array.push(result[i].last_name);
+                            }
+                            var employeeArray = [...new Set(array)];
+                            return employeeArray;
+                        }
+                    },
 
