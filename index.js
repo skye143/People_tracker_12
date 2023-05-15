@@ -161,5 +161,42 @@ var employee_tracker = function () {
                             }
                         }
                     },
+                    
+                    {
+                        // Adding Employee Role
+                        type: 'list',
+                        name: 'role',
+                        message: 'What is the employees role?',
+                        choices: () => {
+                            var array = [];
+                            for (var i = 0; i < result.length; i++) {
+                                array.push(result[i].title);
+                            }
+                            var newArray = [...new Set(array)];
+                            return newArray;
+                        }
+                    },
+                    {
+                        // Adding Employee Manager
+                        type: 'input',
+                        name: 'manager',
+                        message: 'Who is the employees manager?',
+                        validate: managerInput => {
+                            if (managerInput) {
+                                return true;
+                            } else {
+                                console.log('Please Add A Manager!');
+                                return false;
+                            }
+                        }
+                    }
+                ]).then((answers) => {
+                    // Comparing the result and storing it into the variable
+                    for (var i = 0; i < result.length; i++) {
+                        if (result[i].title === answers.role) {
+                            var role = result[i];
+                        }
+                    }
+
 
 
