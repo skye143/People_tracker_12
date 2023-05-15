@@ -111,6 +111,40 @@ var employee_tracker = function () {
                             return array;
                         }
                     }
-                ])
+                ]).then((answers) => {
+                    // Comparing the result and storing it into the variable
+                    for (var i = 0; i < result.length; i++) {
+                        if (result[i].name === answers.department) {
+                            var department = result[i];
+                        }
+                    }
+
+                    db.query(`INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)`, [answers.role, answers.salary, department.id], (err, result) => {
+                        if (err) throw err;
+                        console.log(`Added ${answers.role} to the database.`)
+                        employee_tracker();
+                    });
+                })
+            });
+        } else if (answers.prompt === 'Add An Employee') {
+            // Calling the database to acquire the roles and managers
+            db.query(`SELECT * FROM employee, role`, (err, result) => {
+                if (err) throw err;
+
+                inquirer.prompt([
+                    {
+                        // Adding Employee First Name
+                        type: 'input',
+                        name: 'firstName',
+                        message: 'What is the employees first name?',
+                        validate: firstNameInput => {
+                            if (firstNameInput) {
+                                return true;
+                            } else {
+                                console.log('Please Add A First Name!');
+                                return false;
+                            }
+                        }
+                    },
 
 
