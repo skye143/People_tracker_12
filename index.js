@@ -146,5 +146,20 @@ var employee_tracker = function () {
                             }
                         }
                     },
+                    
+                    {
+                        // Adding Employee Last Name
+                        type: 'input',
+                        name: 'lastName',
+                        message: 'What is the employees last name?',
+                        validate: lastNameInput => {
+                            if (lastNameInput) {
+                                return true;
+                            } else {
+                                console.log('Please Add A Salary!');
+                                return false;
+                            }
+                        }
+                    },
 
 
