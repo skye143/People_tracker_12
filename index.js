@@ -3,6 +3,8 @@
 const inquirer = require('inquirer');
 const db = require('./db/connection');
 
+
+
 // Start server after DB connection
 db.connect(err => {
     if (err) throw err;
@@ -17,6 +19,7 @@ var employee_tracker = function () {
         name: 'prompt',
         message: 'What would you like to do?',
         choices: ['View All Department', 'View All Roles', 'View All Employees', 'Add A Department', 'Add A Role', 'Add An Employee', 'Update An Employee Role', 'Log Out']
+    
     }]).then((answers) => {
         // Views the Department Table in the Database
         if (answers.prompt === 'View All Department') {
@@ -26,6 +29,7 @@ var employee_tracker = function () {
                 console.table(result);
                 employee_tracker();
             });
+
         } else if (answers.prompt === 'View All Roles') {
             db.query(`SELECT * FROM role`, (err, result) => {
                 if (err) throw err;
@@ -33,6 +37,7 @@ var employee_tracker = function () {
                 console.table(result);
                 employee_tracker();
             });
+
         } else if (answers.prompt === 'View All Employees') {
             db.query(`SELECT * FROM employee`, (err, result) => {
                 if (err) throw err;
@@ -40,6 +45,7 @@ var employee_tracker = function () {
                 console.table(result);
                 employee_tracker();
             });
+
         } else if (answers.prompt === 'Add A Department') {
             inquirer.prompt([{
                 // Adding a Department
@@ -54,6 +60,7 @@ var employee_tracker = function () {
                         return false;
                     }
                 }
+
             }]).then((answers) => {
                 db.query(`INSERT INTO department (name) VALUES (?)`, [answers.department], (err, result) => {
                     if (err) throw err;
@@ -61,12 +68,12 @@ var employee_tracker = function () {
                     employee_tracker();
                 });
             })
+
         } else if (answers.prompt === 'Add A Role') {
             // Beginning with the database so that we may acquire the departments for the choice
             db.query(`SELECT * FROM department`, (err, result) => {
                 if (err) throw err;
 
-                
                 inquirer.prompt([
                     {
                         // Adding A Role
@@ -82,7 +89,6 @@ var employee_tracker = function () {
                             }
                         }
                     },
-                    
                     {
                         // Adding the Salary
                         type: 'input',
@@ -97,7 +103,6 @@ var employee_tracker = function () {
                             }
                         }
                     },
-                    
                     {
                         // Department
                         type: 'list',
@@ -118,7 +123,6 @@ var employee_tracker = function () {
                             var department = result[i];
                         }
                     }
-
                     db.query(`INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)`, [answers.role, answers.salary, department.id], (err, result) => {
                         if (err) throw err;
                         console.log(`Added ${answers.role} to the database.`)
@@ -126,6 +130,7 @@ var employee_tracker = function () {
                     });
                 })
             });
+
         } else if (answers.prompt === 'Add An Employee') {
             // Calling the database to acquire the roles and managers
             db.query(`SELECT * FROM employee, role`, (err, result) => {
@@ -146,7 +151,6 @@ var employee_tracker = function () {
                             }
                         }
                     },
-                    
                     {
                         // Adding Employee Last Name
                         type: 'input',
@@ -161,7 +165,6 @@ var employee_tracker = function () {
                             }
                         }
                     },
-                    
                     {
                         // Adding Employee Role
                         type: 'list',
@@ -190,6 +193,7 @@ var employee_tracker = function () {
                             }
                         }
                     }
+
                 ]).then((answers) => {
                     // Comparing the result and storing it into the variable
                     for (var i = 0; i < result.length; i++) {
@@ -205,6 +209,7 @@ var employee_tracker = function () {
                     });
                 })
             });
+
         } else if (answers.prompt === 'Update An Employee Role') {
             // Calling the database to acquire the roles and managers
             db.query(`SELECT * FROM employee, role`, (err, result) => {
@@ -239,6 +244,7 @@ var employee_tracker = function () {
                             return newArray;
                         }
                     }
+
                 ]).then((answers) => {
                     // Comparing the result and storing it into the variable
                     for (var i = 0; i < result.length; i++) {
@@ -253,13 +259,14 @@ var employee_tracker = function () {
                         }
                     }
 
-                    db.query(`UPDATE employee SET ? WHERE ?`, [{role_id: role}, {last_name: name}], (err, result) => {
+                    db.query(`UPDATE employee SET ? WHERE ?`, [{ role_id: role }, { last_name: name }], (err, result) => {
                         if (err) throw err;
                         console.log(`Updated ${answers.employee} role to the database.`)
                         employee_tracker();
                     });
                 })
             });
+
         } else if (answers.prompt === 'Log Out') {
             db.end();
             console.log("Good-Bye!");
