@@ -2,6 +2,8 @@
 
 const inquirer = require('inquirer');
 const db = require('./db/connection');
+const index = require('./db/index');
+
 
 
 
