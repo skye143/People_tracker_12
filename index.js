@@ -260,7 +260,12 @@ var employee_tracker = function () {
                     });
                 })
             });
-
+        } else if (answers.prompt === 'Log Out') {
+            db.end();
+            console.log("Good-Bye!");
+        }
+    })
+};
 
 
 
