@@ -1,4 +1,4 @@
-// place from read me questions and update it
+
 
 const inquirer = require('inquirer');
 const db = require('./db/connection');
