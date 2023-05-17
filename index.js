@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const figlet = require('figlet');
-const gradient = require('gradient-string'); 
+const gradient = require('gradient-string');
 
 
 
@@ -48,7 +48,7 @@ const promptUser = () => {
                     break;
                 case 'Add Role':
                     addRole();
-                    break; 
+                    break;
                 case 'View All Departments':
                     viewDep();
                     break;

@@ -1,4 +1,4 @@
-const { promptUser} = require('../index');
+const { promptUser } = require('../index');
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 
@@ -59,7 +59,7 @@ const addRole = () => {
                         choices: depArray
                     }
                 ])
-                .then ((data) => {
+                .then((data) => {
                     let department_id;
                     for (let i = 0; i < depArray.length; i++) {
                         if (depArray[i] === data.department) {
