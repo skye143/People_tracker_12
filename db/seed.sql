@@ -27,7 +27,7 @@ VALUES
 INSERT INTO employee
   (    first_name, last_name, role_id, manager_id, manager_confirm)
 VALUES
-  ('Juan', 'Garcia', 1, 4),
+  ('Juan', 'Garcia', 1, null, true),
   ('Jonathan', 'Villcapoma', 2, 3),
   ('Jesus', 'Meraz', 3, 1),
   ('Estefany', 'Munoz', 4, 5);
