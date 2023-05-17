@@ -10,7 +10,7 @@
 * [Acceptance Criteria](#Acceptance-Criteria)
 * [Website Link](#Website-Link)
 * [Feedback](#feedback)
-* [Live Recording Of The Applications Functionality](#live-recording-of-the-applications-functionality)
+* [Demo](#demo)
 
 
 ## Description
@@ -20,6 +20,34 @@ I have developed a command-line application for efficient management of a compan
 
 ## Installation
 ***Requirments***
+
+- MYSQL
+- Node.js
+- NPMs:
+- Inquirer
+- Mysql2
+- Console.table
+- Figlet
+- Gradient-string
+
+
+### _Installation Steps:_
+
+  1. Create an empty folder.
+
+  2. Copy the code from the repository.
+
+  3. Open the terminal and clone the repository using the copied code:
+    [`git clone git@github.com: git@github.com:skye143/People_tracker_12.git`](https://github.com/skye143/People_tracker_12)
+
+  4. Use the following code to change the origin's URL of your remote repository
+    - git remote set-url origin http://github.com/YOU/YOUR_REPO
+
+5. Now you can install the npm's using the following lines of code:
+      - npm init -y
+      - npm i
+6. You can now use the application by entering the following into your terminal:
+    - node index.js or npm start (If you made that start script in your package.json)
 
 [Node.js](https://nodejs.org/en/)  |  [Inquirer^](https://www.npmjs.com/package/inquirer)  |  [MySQL](https://www.npmjs.com/package/mysql2)
 
@@ -73,7 +101,7 @@ I have developed a command-line application for efficient management of a compan
 
     THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
-  ## Live Recording Of The Applications Functionality
+  ## DEMO
   -------------------------45984895949676956849
 
 ## Website Link &
