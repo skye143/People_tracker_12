@@ -63,3 +63,35 @@ const promptUser = () => {
             console.log('error');
         })
 };
+
+
+
+
+
+
+
+module.exports = { promptUser };
+
+const { viewAllEmp, viewEmpByDep, viewEmpByManager, addEmp, updateEmp } = require('./models/Employee');
+
+const { viewDep, addDep } = require('./models/Department');
+
+const { viewRoles, addRole } = require('./models/Roles');
+
+msg();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
