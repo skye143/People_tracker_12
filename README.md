@@ -19,7 +19,7 @@ I have developed a command-line application for efficient management of a compan
     node index.js
 
 ## Installation
-***Requirments***
+***Requirments to have installed***
 
 - MYSQL
 - Node.js
