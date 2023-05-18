@@ -102,11 +102,11 @@ I have developed a command-line application for efficient management of a compan
     THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
   ## DEMO
-  -------------------------45984895949676956849
+-
 
 ## Website Link &
 ## Feedback
-Check out the deployed app here: [--------456364565---](------------------)
+Check out the deployed app here: []()
 
   To contact me please utilize the provided links below:
 
